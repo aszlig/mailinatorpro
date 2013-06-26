@@ -1,0 +1,15 @@
+#!/usr/bin/env haxe
+-cmd mkdir -p build/chrome/js build/chrome/html
+-cmd cp -rt build/chrome assets/img assets/html
+--next
+-dce full
+-js build/chrome/js/background.js
+-lib chrome-extension
+-main mailinator.Background
+--next
+-dce full
+-js build/chrome/js/popup.js
+-lib chrome-extension
+-main mailinator.Popup
+--next
+--macro mailinator.manifest.Generator.generate()
